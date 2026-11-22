@@ -9,7 +9,7 @@ import AnnualChart from "./components/AnnualChart.jsx";
 import PhasePie from "./components/PhasePie.jsx";
 import Heatmap from "./components/Heatmap.jsx";
 import DataTable from "./components/DataTable.jsx";
-import { phase, makeDemo, monthLabel } from "./lib/enso.js";
+import { phase, monthLabel } from "./lib/enso.js";
 
 const TABS = [
   ["evolution", "Évolution"],
@@ -21,10 +21,7 @@ const TABS = [
 
 function App() {
 
-  const { all, loading, demo } = useEnsoData();
-  console.log("all", all);
-  console.log("loading", loading);
-  console.log("demo", demo);
+  const { all, loading } = useEnsoData();
   const [tab, setTab] = useState("evolution");
   const [theme, setTheme] = useState("light");
   const [from, setFrom] = useState(1990);
@@ -83,16 +80,6 @@ function App() {
           {tab === "data" && <DataTable rows={rows} />}
         </div>
       </div>
-
-      {/* <EvolutionChart rows={rows} />
-      <AnnualChart rows={rows} />
-
-      <PhasePie counts={counts} total={rows.length} />
-      <Heatmap rows={rows} />
-      <DataTable rows={rows} /> */}
-
-
-
     </>
   )
 }
